@@ -1,14 +1,16 @@
-package ru.mzema.standarts;
+package ru.mzema.standards;
 
 import java.io.File;
 import java.sql.*;
 
 public class SQLiteJDBC {
-    public final static String path = "E:\\Git\\Standarts\\standarts.db";
+    public final static String path = "E:\\Git\\Standards\\standards.db";
 
-    Connection connection = null;
+    private Connection connection = null;
 
-    public SQLiteJDBC(File file) {
+    private static SQLiteJDBC jdbc = null;
+
+    private SQLiteJDBC(File file) {
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -26,9 +28,11 @@ public class SQLiteJDBC {
     }
 
 
-    public Connection getConnection() {
-        return connection;
+    public static Connection getConnection() {
+        if (jdbc==null) jdbc = new SQLiteJDBC(new File(path));
+        return jdbc.connection;
     }
+
     public void close() {
         try {
             connection.close();

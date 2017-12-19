@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>download</servlet-name>
-        <servlet-class>ru.mzema.standarts.DownloadServlet</servlet-class>
+        <servlet-class>ru.mzema.standards.DownloadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
